@@ -1,6 +1,8 @@
-//
+//creating a varible to the  present time and day//
 var presentDateAndTimeEl = moment().format("LLLL ss ");
+// our diplayed time to our html via append//
 $('#presentDateAndTime').append(presentDateAndTimeEl);
+//setting a variable to store the present time in hours//
 var currentTime = moment().hours();
 console.log(currentTime)
 //This will update the time displayed every second.
@@ -12,7 +14,7 @@ function update() {
    
   
   
-
+//
 $(document).ready(function () {
 
     $('#input1').html(localStorage.getItem('9AmInput'));
@@ -28,7 +30,7 @@ $(document).ready(function () {
   
 
 
-   
+   //setting a name of ()am/pmInput with the value of the useres text entry on click//
     $('button').on("click", function () {
         localStorage.setItem('9AmInput', $('#input1').val());
         localStorage.setItem('10AmInput', $('#input2').val());
@@ -41,14 +43,17 @@ $(document).ready(function () {
         localStorage.setItem('5PmInput', $('#input9').val());
         localStorage.setItem('6PmInput', $('#input10').val());
     });
-    
+    //function to change display color based on present time using the currentTime varibale we created that is referencing hours//
     function colorCodeTime() {
      
        
-       
+       //for each timeblock this will happen//
         $(".time-block").each(function () {
+            //new variable that equals the current time-block id=hr[9-18] removing the hr and giving it the number value of the curent hr proceding to its time-block//
             var timeBlock = parseInt($(this).attr('id').split("hr")[1]);
+
 console.log(timeBlock)
+//conditonal statemanets that will change background on vlaue of our timeblock var and currentTime variable//
             if (currentTime < timeBlock) {
                 $(this).addClass('future').removeClass("past present");
            
@@ -68,9 +73,3 @@ console.log(timeBlock)
     }
     colorCodeTime()
 });
-// console.log(currentTime);
-// console.log (currentTime);
-
-// $('.row').each(function()){
-//     var currentT = parseInt($(this).attr('id'))
-// }

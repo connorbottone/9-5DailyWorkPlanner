@@ -1,7 +1,10 @@
+// var timeblock =  $('time-block');
+//test funciotn am9
 
 var presentDateAndTimeEl = moment().format("LLLL ss ");
 $('#presentDateAndTime').append(presentDateAndTimeEl);
 var currentTime = moment().hours();
+console.log(currentTime)
 //This is provind the time element a continuse update without affecting inner html
 function update() {
     $('#presentDateAndTime').html(moment().format('LLLL ss'));
@@ -24,7 +27,7 @@ $(document).ready(function () {
     $('#input8').html(localStorage.getItem('4PmInput'));
     $('#input9').html(localStorage.getItem('5PmInput'));
     $('#input10').html(localStorage.getItem('6PmInput'));
-
+  
 
 
    
@@ -40,5 +43,36 @@ $(document).ready(function () {
         localStorage.setItem('5PmInput', $('#input9').val());
         localStorage.setItem('6PmInput', $('#input10').val());
     });
-});
+    
+    function colorCodeTime() {
+     
+       
+       
+        $(".time-block").each(function () {
+            var timeBlock = parseInt($(this).attr('id').split("hr")[1]);
+console.log(timeBlock)
+            if (currentTime < timeBlock) {
+                $(this).addClass('future').removeClass("past present");
+            console.log("hello")
+            }
 
+            else if (currentTime> timeBlock) {
+                $(this).addClass('past').removeClass("present future");
+            console.log("hello2")
+            }
+            else if (currentTime === timeBlock) {
+                $(this).addClass('present').removeClass("past future")
+           console.log("hello")
+            }
+        });
+
+
+    }
+    colorCodeTime()
+});
+// console.log(currentTime);
+// console.log (currentTime);
+
+// $('.row').each(function()){
+//     var currentT = parseInt($(this).attr('id'))
+// }

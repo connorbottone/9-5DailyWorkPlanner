@@ -1,11 +1,9 @@
-// var timeblock =  $('time-block');
-//test funciotn am9
-
+//
 var presentDateAndTimeEl = moment().format("LLLL ss ");
 $('#presentDateAndTime').append(presentDateAndTimeEl);
 var currentTime = moment().hours();
 console.log(currentTime)
-//This is provind the time element a continuse update without affecting inner html
+//This will update the time displayed every second.
 function update() {
     $('#presentDateAndTime').html(moment().format('LLLL ss'));
   }
@@ -53,16 +51,16 @@ $(document).ready(function () {
 console.log(timeBlock)
             if (currentTime < timeBlock) {
                 $(this).addClass('future').removeClass("past present");
-            console.log("hello")
+           
             }
 
             else if (currentTime> timeBlock) {
                 $(this).addClass('past').removeClass("present future");
-            console.log("hello2")
+          
             }
             else if (currentTime === timeBlock) {
                 $(this).addClass('present').removeClass("past future")
-           console.log("hello")
+          
             }
         });
 
